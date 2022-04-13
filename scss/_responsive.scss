@@ -1,0 +1,67 @@
+@import "./functions";
+@import "./mixins";
+@import "./variables";
+
+@include media-md {
+	.menu-btn {
+		visibility: hidden;
+	}
+
+	.nav {
+		visibility: visible;
+
+		.nav-list {
+			display: block;
+			transform: translateY(0);
+			height: 100%;
+			background: transparent;
+			text-align: right;
+
+			&-item {
+				display: inline;
+				padding-right: 1.5rem;
+			}
+
+			&-link {
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	.about-text {
+		font-size: 1.5rem;
+	}
+
+	.project {
+		&-image {
+			height: 40vh;
+		}
+
+		&-items {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.project-text {
+		font-size: 3rem;
+	}
+	.contact-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@include media-lg {
+	.project {
+		&-items {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.contact-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@include media-xl {
+	.project-image {
+		height: 50vh;
+	}
+}

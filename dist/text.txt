@@ -1,0 +1,90 @@
+// _base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+	font: 100% $font-stack;
+	color: $primary-color;
+}
+
+=====================================
+@import "./variables";
+
+/*Font-weights function*/
+@function weight($weight-name) {
+	@return map-get($font-weights, $weight-name);
+}
+
+/*Font-sizes function*/
+@function size($size-name) {
+	@return map-get($font-sizes, $size-name);
+}
+
+/*Colors function*/
+@function color($color-name) {
+	@return map-get($colors, $color-name);
+}
+
+/*Widths function*/
+@function width($width-name) {
+	@return map-get($widths, $width-name);
+}
+
+========================================
+@import "./functions";
+
+/*Mixins*/
+@mixin flexCenter($direction) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
+@mixin theme($light-theme) {
+	@if $light-theme {
+		background: lighten(color(primary), 100%);
+		color: darken(color(text), 100%);
+	}
+}
+
+@mixin width {
+	@media screen and (max-width: width(large)) {
+		@content;
+	}
+}
+
+============================================
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+===========================================
+$colors: (
+	"primary": #272727,
+	"accent": #ff652f,
+	"text": #ffffff,
+);
+
+$font-weights: (
+	"thin": 100,
+	"light": 300,
+	"regular": 400,
+	"medium": 500,
+	"bold": 700,
+	"black": 900,
+);
+
+$font-sizes: (
+	"small": 12px,
+	"medium": 14px,
+	"large": 16px,
+);
+
+$widths: (
+	"small": 600px,
+	"medium": 800px,
+	"large": 1000px,
+);
